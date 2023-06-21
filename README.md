@@ -12,10 +12,14 @@ Pass your authentication token in here as a GET parameter:
 
 ## Subscribing
 Once successfully connected, you can subscribe to individual underlying instruments or to all instruments using `*`.
-e.g.
+
+**stream types**:
+You can specify the streams to which you'd like to subscribe with `stream_types` which is a bitmask.
+
+Possible values: `1` (filtered), `2` (absolute), or `3` (both streams).
 
 **Filtered stream**
-```JavaScript
+```js
 ws.send(JSON.stringify({
   action: "subscribe",
   underlyings: ["*"], // listen to all underlyings
@@ -24,7 +28,7 @@ ws.send(JSON.stringify({
 ```
 
 **Both streams**
-```JavaScript
+```js
 ws.send(JSON.stringify({
   action: "subscribe",
   underlyings: ["TSLA", "SPY", "AAPL"], // listen to selected underlyings
@@ -32,19 +36,55 @@ ws.send(JSON.stringify({
 });
 ```
 
+## Unsubscribing
+Send either an `"unsubscribe"` `action` and specify what you'd like to unsubscribe from or an `"unsusbscribe_all"` `action` for everything:
+```js
+ws.send(JSON.stringify({
+  action: "unsubscribe",
+  underlyings: ["TSLA"], // unsubscribe from `TSLA`
+  stream_types: 3,       // unsubscribe from both streams
+});
+```
+
+```js
+ws.send(JSON.stringify({
+  action: "unsubscribe_all", // unsubscribe everything: All symbols and all streams
+});
+```
+
 ## Messages
 Messages come down as [msgpack'd](https://msgpack.org/index.html) tuples of the form:
 ```JavaScript
-[streamType, [underlying, timestamp, delta, gamma, vega, stockPrice, sequenceID, flags]]
+[streamType, signal]
+```
+where `streamType` can be either `1` for the **Filtered** stream or `2` for the **Absolute** stream.
+
+`signal`, here, is itself a tuple of the following format:
+```js
+[
+  underlying, // string
+  timestamp,  // 64-bit integer (UTC milliseconds)
+  delta,      // double
+  gamma,      // double
+  vega,       // double
+  stockPrice, // double
+  sequenceID, // 64-bit integer
+  flags,      // unsigned 32-bit integer
+]
 ```
 
 `flags` is a 32-bit bitmask containing auxiliary data in the following format:
 ```rust
-const PUT_MASK: u32      = 0b00000000001;
-const TYPE_MASK: u32     = 0b00000000110;
-const SIDE_MASK: u32     = 0b00000011000;
-const NEXT_EXP_MASK: u32 = 0b00000100000;
-const RETAIL_MASK: u32   = 0b00001000000;
-const BLOCK_MASK: u32    = 0b00010000000;
-const SPREAD_MASK: u32   = 0b00100000000;
+const PUT_MASK: u32      = 0b000000000001; // 0x001
+const TYPE_MASK: u32     = 0b000000000110; // 0x006
+const SIDE_MASK: u32     = 0b000000011000; // 0x018
+const NEXT_EXP_MASK: u32 = 0b000000100000; // 0x020
+const RETAIL_MASK: u32   = 0b000001000000; // 0x040
+const BLOCK_MASK: u32    = 0b000010000000; // 0x080
+const SPREAD_MASK: u32   = 0b000100000000; // 0x100
 ```
+
+## Streams
+Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
+**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value
+**Absolute**: Filters nothing and lets all Time and Sale.  An absolute value is applied to all options greeks to reflect taking no opionion on "side".
