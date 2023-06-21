@@ -10,6 +10,7 @@ from websockets.sync.client import connect
 FILTERED = 1  # Sends filtered results where a side is determined
 ABSOLUTE = 2  # Sends *all* TimeAndSales with all positive greeks.
 
+OPTION_TYPE_MASK = 0x1
 TNS_TYPE_MASK = 0x6
 SIDE_TYPE_MASK = 0x18
 IS_NEXT_EXP_MASK = 0x20
@@ -60,7 +61,7 @@ def side_to_string(side_idx):
 
 
 def parse_flags(flags):
-    option_type = "P" if (flags & 0x1) else "C"
+    option_type = "P" if (flags & OPTION_TYPE_MASK) else "C"
     tns_type = type_to_string((flags & TNS_TYPE_MASK) >> 1)
     side_type = side_to_string((flags & SIDE_TYPE_MASK) >> 3)
     is_next_exp = (flags & IS_NEXT_EXP_MASK) > 0
