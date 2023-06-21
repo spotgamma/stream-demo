@@ -22,15 +22,18 @@ USER="username" PASSWORD="password" python3 main.py >> data.csv
 /ESU23:XCME,1687307935629,279288.098492,-13739.212874,-1452758.531042,4436.923077,7246932401744510996,P,n,s,1,1,0,0
 ```
 
-The CSV columns are as follows
+### The CSV columns are as follows
 ```
 underlying,timestamp,delta,gamma,vega,stock_price,sequence_id,option_type,tns_type,side,is_next_expiration,is_retail,is_block,is_spread
 ```
 
-* `sequence_id`: Unique identifier for the option instrument traded
-* `option_type`: 'P': 'put', 'C': 'call'
-* `tns_type`: TimeAndSale transaction type: 'n': 'new', 'r': 'correction', 'c': 'cancellation'
-* `side`: 'b': 'buy', 's': 'sell', 'u': 'unknown'
-* `is_next_expiration`: whether the option traded has an expiration that is the next to expire
-* `is_block`:  Whether or not the trade was part of a block trade
-* `is_spread`: Whether or not the option traded for this TimeAndSale was part of a spread leg
+### Explanation of fields generated in the above CSV:
+* **`underlying`**: The underlying instrument for the given option's T&S (Time and Sale)
+* **`timestamp`**: The timestamp of the T&S
+* **`sequence_id`**: Unique identifier for the option instrument traded
+* **`option_type`**: `P`: 'put', `C`: 'call'
+* **`tns_type`**: TimeAndSale transaction type: `n`: 'new', `r`: 'correction', `c`: 'cancellation'
+* **`side`**: `b`: 'buy', `s`: 'sell', `u`: 'unknown'
+* **`is_next_expiration`**: whether the option traded has an expiration that is the next to expire
+* **`is_block`**:  Whether or not the trade was part of a block trade
+* **`is_spread`**: Whether or not the option traded for this TimeAndSale was part of a spread leg
