@@ -1,0 +1,14 @@
+{
+  "name": "SpotGamma-stream-demo",
+  "version": "1.0.0",
+  "description": "SpotGamma stream demo",
+  "main": "index.js",
+  "repository": "https://github.com/spotgamma/stream-demo",
+  "author": "jrwats",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@msgpack/msgpack": "^3.0.0-beta2",
+    "ws": "^8.13.0"
+  }
+}
