@@ -2,7 +2,7 @@
 Demonstrating connecting to the SpotGamma stream.
 
 ## Connecting
-To connect, you'll first need a token by authenticating with `https://stream.spotgamma.com/auth` using a SpotGamma-provided username and password.
+To connect, you'll first need to acquire a token by authenticating with `https://stream.spotgamma.com/auth` using a SpotGamma-provided username and password.
 
 The stream is hosted over a websocket: `wss://stream.spotgamma.com/stream`.
 Pass your authentication token in here as a GET parameter:
