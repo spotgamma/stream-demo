@@ -1,0 +1,45 @@
+Arguments: 
+  /home/johnw/.nvm/versions/node/v18.12.1/bin/node /home/johnw/.nvm/versions/node/v18.12.1/bin/yarn add @msgpack
+
+PATH: 
+  /opt/apache-maven-3.6.3/bin:/home/johnw/.local/bin:/home/johnw/go/bin:/home/johnw/bin:/home/johnw/.yarn/bin:/home/johnw/.config/yarn/global/node_modules/.bin:/home/johnw/.cask/bin:/home/johnw/.cargo/bin:/opt/apache-maven-3.6.3/bin:/home/johnw/.local/bin:/home/johnw/go/bin:/home/johnw/bin:/home/johnw/.yarn/bin:/home/johnw/.config/yarn/global/node_modules/.bin:/home/johnw/.cask/bin:/home/johnw/.cargo/bin:/opt/apache-maven-3.6.3/bin:/home/johnw/.local/bin:/home/johnw/go/bin:/home/johnw/bin:/home/johnw/.yarn/bin:/home/johnw/.config/yarn/global/node_modules/.bin:/home/johnw/.cask/bin:/home/johnw/.nvm/versions/node/v18.12.1/bin:/home/johnw/.cargo/bin:/home/johnw/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/johnw/workspace/jdtls/bin:/home/johnw/workspace/jdtls/bin:/home/johnw/Android/platform-tools:/home/johnw/Android/cmdline-tools/bin:/mnt/c/Users/fixer/AppData/Local/Android/Sdk/Sdk:/home/johnw/workspace/jdtls/bin:/home/johnw/Android/platform-tools:/home/johnw/Android/cmdline-tools/bin:/mnt/c/Users/fixer/AppData/Local/Android/Sdk/Sdk
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@msgpack: Request "https://registry.yarnpkg.com/@msgpack" returned a 405
+      at params.callback [as _callback] (/home/johnw/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:66154:18)
+      at self.callback (/home/johnw/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/home/johnw/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/home/johnw/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "SpotGamma-stream-demo",
+    "version": "1.0.0",
+    "description": "SpotGamma stream demo",
+    "main": "index.js",
+    "repository": "https://github.com/spotgamma/stream-demo",
+    "author": "jrwats",
+    "license": "MIT",
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

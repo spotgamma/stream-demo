@@ -1,19 +1,22 @@
-# Python example
+# JavaScript example
+This is an example of connecting like you would server-side in `node.js`
 
-External library dependencies
-* asyncio
-* websockets
-* msgpack
+### Clientside/browser
+If running in clientside browser, we'd use the native `Websocket` library from the, and update the point at which we decode (See `BROWSER NOTE` comments in code).
+
+## External library dependencies:
+* [msgpack](https://www.npmjs.com/package/@msgpack/msgpack)
+* [ws](https://www.npmjs.com/package/ws)
 
 ## Installing prerequisites:
 ```
-pip3 install asyncio websockets msgpack
+yarn install
 ```
 
 ## Running and appending CSV output to a file
 (You'll need a username and password provided by SpotGamma in order to authenticate)
 ```bash
-USER="username" PASSWORD="password" python3 main.py >> data.csv
+USER="username" PASSWORD="password" node index.js >> data.csv
 ```
 
 ## Example output:
@@ -38,3 +41,4 @@ underlying,timestamp,delta,gamma,vega,stock_price,sequence_id,option_type,tns_ty
 * **`is_next_expiration`**: whether the option traded has an expiration that is the next to expire
 * **`is_block`**:  Whether or not the trade was part of a block trade
 * **`is_spread`**: Whether or not the option traded for this TimeAndSale was part of a spread leg
+
