@@ -14,7 +14,7 @@ Pass your authentication token in here as a GET parameter:
 Once successfully connected, you can subscribe to individual underlying instruments or to all instruments using `*`.
 
 **stream types**:
-You can specify the streams to which you'd like to subscribe with `stream_types` which is a bitmask.
+You can specify the streams to which you'd like to subscribe with the `stream_types` bitamsk.
 
 Possible values: `1` (filtered), `2` (absolute), or `3` (both streams).
 
