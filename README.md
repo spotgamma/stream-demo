@@ -1,6 +1,12 @@
 # stream-demo
 Demonstrating connecting to the SpotGamma stream.
 
+## Streams
+Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
+**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value.
+
+**Absolute**: Filters nothing and lets all **TnS** events through.  An absolute value is applied to all options greeks to reflect that we are taking no opinion on the "side" in relation to a market maker.
+
 ## Connecting
 To connect, you'll first need to acquire a token by authenticating with `https://stream.spotgamma.com/auth` using a SpotGamma-provided username and password.
 
@@ -83,9 +89,3 @@ const RETAIL_MASK: u32   = 0b000001000000; // 0x040 - 1 = is a retail Time & Sal
 const BLOCK_MASK: u32    = 0b000010000000; // 0x080 - 1 = is a block trade
 const SPREAD_MASK: u32   = 0b000100000000; // 0x100 - 1 = is part of a spread leg
 ```
-
-## Streams
-Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
-**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value.
-
-**Absolute**: Filters nothing and lets all **TnS** events through.  An absolute value is applied to all options greeks to reflect that we are taking no opinion on the "side" in relation to a market maker.
