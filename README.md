@@ -6,8 +6,8 @@ To connect, you'll first need to acquire a token by authenticating with `https:/
 
 The stream is hosted over a websocket: `wss://stream.spotgamma.com/stream`.
 Pass your authentication token in here as a GET parameter:
-```JavaScript
-`wss://stream.spotgamma.com/stream?token=${token}`
+```js
+const url = `wss://stream.spotgamma.com/stream?token=${token}`
 ```
 
 ## Subscribing
