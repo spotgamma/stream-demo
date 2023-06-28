@@ -3,6 +3,7 @@ Demonstrating connecting to the SpotGamma stream.
 
 ## Streams
 Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
+
 **Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value.
 
 **Absolute**: Filters nothing and lets all **TnS** events through.  An absolute value is applied to all options greeks to reflect that we are taking no opinion on the "side" in relation to a market maker.
