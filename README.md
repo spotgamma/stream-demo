@@ -75,16 +75,17 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
 
 `flags` is a 32-bit bitmask containing auxiliary data in the following format:
 ```rust
-const PUT_MASK: u32      = 0b000000000001; // 0x001
-const TYPE_MASK: u32     = 0b000000000110; // 0x006
-const SIDE_MASK: u32     = 0b000000011000; // 0x018
-const NEXT_EXP_MASK: u32 = 0b000000100000; // 0x020
-const RETAIL_MASK: u32   = 0b000001000000; // 0x040
-const BLOCK_MASK: u32    = 0b000010000000; // 0x080
-const SPREAD_MASK: u32   = 0b000100000000; // 0x100
+const PUT_MASK: u32      = 0b000000000001; // 0x001 - 0 = call, 1 = put
+const TYPE_MASK: u32     = 0b000000000110; // 0x006 - 0 = new, 1 = correction, 2 = cancel
+const SIDE_MASK: u32     = 0b000000011000; // 0x018 - 0 = undefined, 1 = buy, 2 = sell
+const NEXT_EXP_MASK: u32 = 0b000000100000; // 0x020 - 1 = expires in the "next/nearest expiration"
+const RETAIL_MASK: u32   = 0b000001000000; // 0x040 - 1 = is a retail Time & Sale
+const BLOCK_MASK: u32    = 0b000010000000; // 0x080 - 1 = is a block trade
+const SPREAD_MASK: u32   = 0b000100000000; // 0x100 - 1 = is part of a spread leg
 ```
 
 ## Streams
 Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
-**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value
-**Absolute**: Filters nothing and lets all Time and Sale.  An absolute value is applied to all options greeks to reflect taking no opionion on "side".
+**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value.
+
+**Absolute**: Filters nothing and lets all **TnS** events through.  An absolute value is applied to all options greeks to reflect that we are taking no opinion on the "side" in relation to a market maker.
