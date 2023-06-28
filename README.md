@@ -78,7 +78,7 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
 const PUT_MASK: u32      = 0b000000000001; // 0x001 - 0 = call, 1 = put
 const TYPE_MASK: u32     = 0b000000000110; // 0x006 - 0 = new, 1 = correction, 2 = cancel
 const SIDE_MASK: u32     = 0b000000011000; // 0x018 - 0 = undefined, 1 = buy, 2 = sell
-const NEXT_EXP_MASK: u32 = 0b000000100000; // 0x020 - 1 = expires in the "next/nearest expiration"
+const NEXT_EXP_MASK: u32 = 0b000000100000; // 0x020 - 1 = expires in the next or nearest expiration
 const RETAIL_MASK: u32   = 0b000001000000; // 0x040 - 1 = is a retail Time & Sale
 const BLOCK_MASK: u32    = 0b000010000000; // 0x080 - 1 = is a block trade
 const SPREAD_MASK: u32   = 0b000100000000; // 0x100 - 1 = is part of a spread leg
