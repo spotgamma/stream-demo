@@ -3,7 +3,7 @@ const { decode } = require("@msgpack/msgpack");
 // BROWSER NOTE: Remove the definition below when running in a browser
 const WebSocket = require("ws"); 
 
-const SYMBOLS = ["/ESU23:XCME", "SPY", "AAPL", "TSLA"];
+const SYMBOLS = ["__FAKE__", "/ESU23:XCME", "SPY", "AAPL", "TSLA"];
 
 const Index = {
   UNDERLYING: 0,
@@ -17,13 +17,13 @@ const Index = {
 };
 
 const Mask = {
-  OPTION_TYPE: 0x1;
-  TNS_TYPE: 0x6;
-  SIDE_TYPE: 0x18;
-  IS_NEXT_EXP: 0x20;
-  IS_RETAIL: 0x40;
-  IS_BLOCK: 0x80;
-  IS_SPREAD: 0x100;
+  OPTION_TYPE: 0x1,
+  TNS_TYPE: 0x6,
+  SIDE_TYPE: 0x18,
+  IS_NEXT_EXP: 0x20,
+  IS_RETAIL: 0x40,
+  IS_BLOCK: 0x80,
+  IS_SPREAD: 0x100,
 };
 
 TYPE_STRS = [
@@ -91,7 +91,9 @@ async function authenticateAndConnect() {
       numMsgs += 1;
       // BROWSER NOTE: In a browser, we'd use the blob.arrayBuffer() function:
       //   i.e. const signalTuple = decode(await data.arrayBuffer());
-      const signalTuple = decode(data);
+      const signalTuple = decode(data, {
+        useBigInt64: true, // for decoding 64-bit sequence ID's
+      });
 
       const [stream, signal] = signalTuple;
       const flagFields = parseFlags(signal[Index.FLAGS]);
