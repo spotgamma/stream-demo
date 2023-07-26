@@ -66,7 +66,7 @@ Messages come down as [msgpack'd](https://msgpack.org/index.html) tuples of the 
 ```
 where `streamType` can be either `1` for the **Filtered** stream or `2` for the **Absolute** stream.
 
-`signal`, here, is itself a tuple of the following format:
+`signal`, here, is itself a tuple (with an arity of 11) of the following format:
 ```js
 [
   underlying, // string
@@ -76,6 +76,9 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
   vega,       // double
   stockPrice, // double
   sequenceID, // 64-bit integer
+  expiry,     // 64-bit integer (UTC milliseconds)
+  strike,     // float
+  size,       // float
   flags,      // unsigned 32-bit integer
 ]
 ```
