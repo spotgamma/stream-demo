@@ -13,7 +13,10 @@ const Index = {
   VEGA: 4,
   STOCK_PRICE: 5,
   SEQUENCE_ID: 6,
-  FLAGS: 7,
+  EXPIRY: 7,
+  STRIKE: 8,
+  SIZE: 9,
+  FLAGS: 10,
 };
 
 const Mask = {

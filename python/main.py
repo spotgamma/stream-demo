@@ -86,7 +86,19 @@ with connect(f"wss://stream.spotgamma.com/stream?token={token}") as ws:
     while True:
         if type(msg) is bytes:
             (stream_type, signal) = msgpack.unpackb(msg, use_list=False)
-            (underlying, timestamp, delta, gamma, vega, price, tns_id, flags) = signal
+            (
+                underlying,
+                timestamp,
+                delta,
+                gamma,
+                vega,
+                price,
+                tns_id,
+                _expiry,
+                _strike,
+                _size,
+                flags,
+            ) = signal
             (
                 option_type,
                 tns_type,
