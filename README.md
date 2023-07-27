@@ -4,7 +4,7 @@ Demonstrating connecting to the SpotGamma stream.
 ## Streams
 Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
 
-**Filtered**: Runs a proprietary filter on options flow  and forms an opinion what "side" the transaction was with respect to Market Makers or Liquidity providers.  This is  reflected in the sign of the delta value, where positive HIRO signal represents buying pressure and negative signal represents selling pressure.
+**Filtered**: Runs a proprietary filter on options flow  and forms an opinion what "side" the transaction was with respect to Market Makers or Liquidity Providers.  This is  reflected in the sign of the delta value, where positive HIRO signal represents buying pressure and negative signal represents selling pressure.
 
 **Absolute**: Filters no optionns and processes all options flow.  An absolute value is applied to all options greeks to reflect that we are forming no opinion on the "side" in relation to a market maker.
 
@@ -21,7 +21,7 @@ const url = `wss://stream.spotgamma.com/stream?token=${token}`
 Once successfully connected, you can subscribe to individual underlying instruments or to all instruments using `*`.
 
 **stream types**:
-You can specify the streams to which you'd like to subscribe with the `stream_types` bitamsk.
+You can specify the streams to which you'd like to subscribe with the `stream_types` bitmask.
 
 Possible values: `1` (filtered), `2` (absolute), or `3` (both streams).
 
