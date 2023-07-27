@@ -4,9 +4,9 @@ Demonstrating connecting to the SpotGamma stream.
 ## Streams
 Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
 
-**Filtered**: Runs a proprietary filter on options ***Time and Sale*** events and forms an opinion what "side" the transaction was on as reflected in positive or negative sign of the delta value.
+**Filtered**: Runs a proprietary filter on options flow  and forms an opinion what "side" the transaction was with respect to Market Makers or Liquidity providers.  This is  reflected in the sign of the delta value, where positive HIRO signal represents buying pressure and negative signal represents selling pressure.
 
-**Absolute**: Filters nothing and processes all option **TnS** events.  An absolute value is applied to all options greeks to reflect that we are taking no opinion on the "side" in relation to a market maker.
+**Absolute**: Filters no optionns and processes all options flow.  An absolute value is applied to all options greeks to reflect that we are forming no opinion on the "side" in relation to a market maker.
 
 ## Connecting
 To connect, you'll first need to acquire a token by authenticating with `https://stream.spotgamma.com/auth` using a SpotGamma-provided username and password.
@@ -71,17 +71,18 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
 [
   underlying, // string
   timestamp,  // 64-bit integer (UTC milliseconds)
-  delta,      // double
-  gamma,      // double
-  vega,       // double
-  stockPrice, // double
+  delta,      // double - Delta HIRO value
+  gamma,      // double - Gamma HIRO value
+  vega,       // double - Vega HIRO value
+  stockPrice, // double - underlying stock price at the time the transaction took place
   sequenceID, // 64-bit integer
   expiry,     // 64-bit integer (UTC milliseconds)
-  strike,     // float
-  size,       // float
+  strike,     // float - strike price of the option
   flags,      // unsigned 32-bit integer
 ]
 ```
+
+NOTE: You can rely on the combination of the `(underlying, sequenceID, strike, flags)` fields representing a unique HIRO event.
 
 `flags` is a 32-bit bitmask containing auxiliary data in the following format:
 ```rust

@@ -15,8 +15,7 @@ const Index = {
   SEQUENCE_ID: 6,
   EXPIRY: 7,
   STRIKE: 8,
-  SIZE: 9,
-  FLAGS: 10,
+  FLAGS: 9,
 };
 
 const Mask = {

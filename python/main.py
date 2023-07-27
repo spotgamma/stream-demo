@@ -96,7 +96,6 @@ with connect(f"wss://stream.spotgamma.com/stream?token={token}") as ws:
                 tns_id,
                 _expiry,
                 _strike,
-                _size,
                 flags,
             ) = signal
             (
