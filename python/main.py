@@ -27,12 +27,13 @@ req = Request("https://stream.spotgamma.com/auth")
 ascii_auth = base64.b64encode(b"%s:%s" % (user, password)).decode("ascii")
 req.add_header("Authorization", f"Basic {ascii_auth}")
 token = urlopen(req).read().decode("ascii")
+print(f"Auth token: {token}", file=sys.stderr)
 
 subscription = json.dumps(
     {
         "action": "subscribe",
         "stream_types": FILTERED,  # Filtered only
-        "underlyings": ["/ESU23:XCME", "SPY", "AAPL", "TSLA"],
+        "underlyings": ["__FAKE__", "/ESU23:XCME", "SPY", "AAPL", "TSLA"],
     }
 )
 
