@@ -69,16 +69,16 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
 `signal`, here, is itself a tuple (with an arity of 11) of the following format:
 ```js
 [
-  underlying, // string
-  timestamp,  // 64-bit integer (UTC milliseconds)
-  delta,      // double - Delta HIRO value
-  gamma,      // double - Gamma HIRO value
-  vega,       // double - Vega HIRO value
-  stockPrice, // double - underlying stock price at the time the transaction took place
-  sequenceID, // 64-bit integer
-  expiry,     // 64-bit integer (UTC milliseconds)
-  strike,     // float - strike price of the option
-  flags,      // unsigned 32-bit integer
+  underlying, // 0: string
+  timestamp,  // 1: 64-bit integer (UTC milliseconds)
+  delta,      // 2: double - Delta HIRO value
+  gamma,      // 3: double - Gamma HIRO value
+  vega,       // 4: double - Vega HIRO value
+  stockPrice, // 5: double - underlying stock price at the time the transaction took place
+  sequenceID, // 6: 64-bit integer
+  expiry,     // 7: 64-bit integer (UTC milliseconds)
+  strike,     // 8: float - strike price of the option
+  flags,      // 9: unsigned 32-bit integer
 ]
 ```
 
