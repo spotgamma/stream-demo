@@ -50,10 +50,10 @@ const parseFlags = (flags) => [
   flags & Mask.OPTION_TYPE ? "P" : "C",
   typeToString((flags & Mask.TNS_TYPE) >> 1),
   sideToString((flags & Mask.SIDE_TYPE) >> 3),
-  (flags & Mask.IS_NEXT_EXP) > 0 ? '0' : '1',
-  (flags & Mask.IS_RETAIL) > 0 ? '0' : '1',
-  (flags & Mask.IS_BLOCK) > 0 ? '0' : '1',
-  (flags & Mask.IS_SPREAD) > 0 ? '0' : '1',
+  !!(flags & Mask.IS_NEXT_EXP) ? '1' : '0',
+  !!(flags & Mask.IS_RETAIL) ? '1' : '0',
+  !!(flags & Mask.IS_BLOCK) ? '1' : '0',
+  !!(flags & Mask.IS_SPREAD) ? '1' : '0',
 ];
 
 async function authenticateAndConnect() {
