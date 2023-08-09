@@ -6,7 +6,7 @@ Currently we support two separate streams of HIRO events: **Filtered** and **Abs
 
 **Filtered**: Runs a proprietary filter on options flow  and forms an opinion what "side" the transaction was with respect to Market Makers or Liquidity Providers.  This is  reflected in the sign of the delta value, where positive HIRO signal represents buying pressure and negative signal represents selling pressure.
 
-**Absolute**: Filters no optionns and processes all options flow.  An absolute value is applied to all options greeks to reflect that we are forming no opinion on the "side" in relation to a market maker.
+**Absolute**: Filters no options and processes all options flow.  An absolute value is applied to all options greeks to reflect that we are forming no opinion on the "side" in relation to a market maker.
 
 ## Connecting
 To connect, you'll first need to acquire a token by authenticating with `https://stream.spotgamma.com/auth` using a SpotGamma-provided username and password.
