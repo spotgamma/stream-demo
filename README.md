@@ -1,6 +1,12 @@
 # stream-demo
 Demonstrating connecting to the SpotGamma stream.
 
+**NOTICE**: This API is not intended for SpotGamma subscribers.  If you are a SpotGamma subscriber who has stumbled onto this repository, this is intended for 3rd-party partners.
+
+## REST APIs:
+* [history](docs/history.md)
+* [manifest](docs/manifest.md)
+
 ## Streams
 Currently we support two separate streams of HIRO events: **Filtered** and **Absolute**.
 
@@ -69,16 +75,17 @@ where `streamType` can be either `1` for the **Filtered** stream or `2` for the 
 `signal`, here, is itself a tuple (with an arity of 11) of the following format:
 ```js
 [
-  underlying, // 0: string
-  timestamp,  // 1: 64-bit integer (UTC milliseconds)
-  delta,      // 2: double - Delta HIRO value
-  gamma,      // 3: double - Gamma HIRO value
-  vega,       // 4: double - Vega HIRO value
-  stockPrice, // 5: double - underlying stock price at the time the transaction took place
-  sequenceID, // 6: 64-bit integer
-  expiry,     // 7: 64-bit integer (UTC milliseconds)
-  strike,     // 8: float - strike price of the option
-  flags,      // 9: unsigned 32-bit integer
+  underlying, //  0: string
+  timestamp,  //  1: 64-bit integer (UTC milliseconds)
+  delta,      //  2: double - Delta HIRO value
+  gamma,      //  3: double - Gamma HIRO value
+  vega,       //  4: double - Vega HIRO value
+  stockPrice, //  5: double - underlying stock price at the time the transaction took place
+  sequence,   //  6: 64-bit integer
+  expiry,     //  7: 64-bit integer (UTC milliseconds)
+  strike,     //  8: float - strike price of the option
+  flags,      //  9: unsigned 32-bit integer
+  instrument, // 10: string - original option instrument namee
 ]
 ```
 
