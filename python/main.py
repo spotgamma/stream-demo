@@ -98,6 +98,7 @@ with connect(f"wss://stream.spotgamma.com/stream?token={token}") as ws:
                 _expiry,
                 _strike,
                 flags,
+                instrument,
             ) = signal
             (
                 option_type,
@@ -110,9 +111,10 @@ with connect(f"wss://stream.spotgamma.com/stream?token={token}") as ws:
             ) = parse_flags(flags)
             if stream_type == FILTERED:
                 print(
-                    "%s,%d,%f,%f,%f,%f,%d,%s,%s,%s,%d,%d,%d,%d"
+                    "%s,%s,%d,%f,%f,%f,%f,%d,%s,%s,%s,%d,%d,%d,%d"
                     % (
                         underlying,
+                        instrument,
                         timestamp,
                         delta,
                         gamma,

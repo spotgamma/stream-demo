@@ -16,6 +16,7 @@ const Index = {
   EXPIRY: 7,
   STRIKE: 8,
   FLAGS: 9,
+  INSTRUMENT: 10,
 };
 
 const Mask = {
@@ -101,7 +102,7 @@ async function authenticateAndConnect() {
       const flagFields = parseFlags(signal[Index.FLAGS]);
       const csvRow = signal
         .slice(Index.UNDERLYING, Index.SEQUENCE_ID)
-        .concat(flagFields)
+        .concat(flagFields, [signal[Index.INSTRUMENT]])
         .join(",");
       console.log(csvRow);
     }
