@@ -3,7 +3,8 @@ The `/history` REST API provides up to a 2-day lookup history of all streamed ev
 It takes 1 requried parameters and 3 optional query parameters:
 1. `sym`: `String` (required)
 2. `stream`: `String` (enum): values `absolute` or `filtered`. Defaults to `filtered`
-3. `start`: `i64` UTC epoch in milliseconds (**inclusive**). Defaults to midnight UTC (`00:00+0:00`) today
+3. `start`: `i64` UTC epoch in milliseconds (**inclusive**). Defaults to midnight UTC (`00:00+0:00`) today.
+    * If it is a weekend day (Saturday or Sunday), defaults to the last Friday midnight UTC.
 4. `end`: `i64` UTC epoch milliseconds (**exclusive**). Defaults to now
 
 Example API call:
