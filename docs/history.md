@@ -1,4 +1,4 @@
-# History REST api
+# History REST API
 The `/history` REST API provides up to a 2-day lookup history of all streamed events in both the `filtered` and `absolute` streams.
 It takes 1 requried parameters and 3 optional query parameters:
 1. `sym`: `String` (required)
