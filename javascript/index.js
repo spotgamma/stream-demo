@@ -28,7 +28,7 @@ const Mask = {
   IS_SPREAD: 0x100,
 };
 
-TYPE_STRS = [
+const TYPE_STRS = [
   "n", // new
   "r", // correction
   "c", // cancel
